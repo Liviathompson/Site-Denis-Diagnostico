@@ -1,5 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Seleciona o checkbox do menu e todos os links dentro do nav
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    // Para cada link, adiciona um evento de clique
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Se o menu estiver aberto (checked), ele desmarca para fechar
+            if (menuToggle.checked) {
+                menuToggle.checked = false;
+            }
+        });
+    });
+
+    // ... restante do seu código (FAQ, etc)
+});
+
+    // ... restante do seu código (FAQ, Smooth Scroll)
+
     // 1. FAQ Accordion Logic
     const faqItems = document.querySelectorAll('.faq-item');
 
@@ -19,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+
     // 2. Smooth Scroll for Nav Links (Opcional, pois o CSS já faz)
     const links = document.querySelectorAll('nav a');
     links.forEach(link => {
@@ -35,4 +55,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     console.log("🚀 Landing Page 'Profissão Reiki' carregada com sucesso.");
-});

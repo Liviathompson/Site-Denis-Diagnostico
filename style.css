@@ -1080,3 +1080,71 @@ footer {
         width: 100%;
     }
 }
+
+/* --- AJUSTES DE RESPONSIVIDADE HERO --- */
+@media (max-width: 768px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        display: flex; /* Mudamos para flex para controlar a ordem com facilidade */
+        flex-direction: column;
+    }
+
+    .hero-text {
+        order: 1; /* TEXTO PRIMEIRO */
+    }
+
+    .hero-img {
+        order: 2; /* IMAGEM DEPOIS */
+        margin-top: 30px;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+}
+
+/* --- AJUSTE REDES SOCIAIS (SOBRE) --- */
+.social-icons {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start; /* Padrão desktop */
+}
+
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .social-icons {
+        justify-content: center; /* CENTRALIZA NO MOBILE */
+    }
+}
+
+/* --- AJUSTE RESPONSIVIDADE PREÇO --- */
+.price-title {
+    font-size: 1.7rem;
+    color: var(--primary-blue);
+    font-weight: 800;
+    margin-bottom: 20px;
+    /* Removemos o white-space: nowrap para permitir quebra */
+}
+
+@media (max-width: 768px) {
+    .price-title {
+        font-size: 1.4rem;
+        white-space: normal; /* Garante que a frase quebre linha */
+        text-align: center;
+    }
+    
+    .installment-line {
+        flex-wrap: wrap; /* Garante que o valor não escape da tela */
+    }
+
+    .inst-value {
+        font-size: 2.2rem;
+    }
+}
