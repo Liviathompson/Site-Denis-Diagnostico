@@ -150,10 +150,13 @@ nav a:not(.btn-nav):hover:after {
 }
 
 .hero h1 {
-    font-size: 2.1rem;
+    font-size: 1.7rem;
     color: var(--primary-blue);
     line-height: 1.2;
     margin-bottom: 20px;
+    /* Novos ajustes para justificar */
+    text-align: justify;
+    max-width: 650px;
 
 }
 
@@ -161,8 +164,12 @@ nav a:not(.btn-nav):hover:after {
     color: var(--gold-dark);
 }
 
+.hero-img {
+    padding-left: 60px; /* Isso empurra o conjunto todo para a direita */
+}
+
 .hero-img img {
-    width: 105%;
+    width: 100%;
     border-radius: 15px;
     box-shadow: 15px 15px 0 var(--primary-blue);
     /* Esse é o efeito da borda azul sólida */
@@ -493,6 +500,29 @@ nav a:not(.btn-nav):hover:after {
     flex-shrink: 0;
     line-height: 1;
 }
+.card-centered {
+    display: flex;
+    flex-direction: column; /* Empilha o título e o parágrafo */
+    align-items: center;    /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente (se houver min-height) */
+    text-align: center;     /* Garante que o texto dentro das tags também alinhe */
+    padding: 40px;          /* Aumenta o respiro interno */
+    margin-top: 50px;       /* Mantém o espaço que você pediu antes */
+    border: 1px solid var(--gold-light); /* O destaque dourado */
+}
+
+/* Removemos o space-between do card-header padrão para não jogar o título pro lado */
+.card-centered .card-header {
+    display: block; 
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+/* Destaque para o último card de renda */
+#pilares .card-pillar:last-child {
+    border: 1px solid var(--gold-light);
+    background: rgba(223, 188, 103, 0.1); /* Um fundo sutilmente dourado */
+}
 
 .card-pillar p {
     font-size: 0.9rem;
@@ -565,11 +595,20 @@ nav a:not(.btn-nav):hover:after {
     text-align: center;
 }
 
+.deliverables-section + .deliverables-section {
+    padding-top: 0; /* Remove o padding superior da segunda seção */
+}
+
 .subtitle-text-light {
     color: var(--white);
-    margin: -20px 0 50px 0;
-    opacity: 0.9;
-    font-size: 1.1rem;
+    margin: -10px 0 50px 0;
+    opacity: 1; /* Aumentamos a opacidade para ler melhor */
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-style: italic;
+    border-left: 4px solid var(--gold-light); /* Borda dourada na esquerda */
+    padding-left: 20px;
+    display: inline-block; /* Faz a borda respeitar o tamanho do texto */
 }
 
 .deliverables-grid {
@@ -595,6 +634,7 @@ nav a:not(.btn-nav):hover:after {
 .deliverable-item-dark i {
     color: var(--gold-light);
     font-size: 1.3rem;
+    
 }
 
 .deliverable-item-dark span {
@@ -634,11 +674,16 @@ nav a:not(.btn-nav):hover:after {
 }
 
 .price-title {
-    font-size: 1.7rem;
+   font-size: 1.4rem;      /* Reduzi de 1.7rem para 1.4rem */
     color: var(--primary-blue);
     font-weight: 800;
     margin-bottom: 20px;
-    white-space: nowrap;
+    text-align: center;
+    line-height: 1.3;       /* Melhora a leitura se o texto quebrar */
+    width: 100%;            /* Garante que respeite o container */
+    padding: 0 10px;        /* Margem interna de segurança */
+    white-space: normal;    /* Importante: permite que o texto quebre linha se necessário */
+    text-transform: uppercase;
 }
 
 .old-price {
@@ -664,23 +709,27 @@ nav a:not(.btn-nav):hover:after {
 
 /* AJUSTE NO CONTAINER DE PREÇO PARA MELHOR ORGANIZAÇÃO */
 .price-container {
-    margin-bottom: 40px;
+   display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
     /* Espaço entre o bloco de preço e a lista de bônus/features */
 }
 
 .old-price {
-    font-size: 1.4rem;
+   font-size: 1.2rem;
     color: #999;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     /* Pequeno espaço antes do 12x */
 }
 
 .installment-line {
-    display: flex;
+ display: flex;
     align-items: baseline;
     justify-content: center;
     gap: 10px;
-    margin-top: 10px;
+    margin-top: 15px; /* Aproxima do "ou" */
+    margin-bottom: 30px;
 }
 
 .inst-text {
@@ -698,13 +747,38 @@ nav a:not(.btn-nav):hover:after {
 
 /* O "ou" centralizado */
 .price-separator {
-    font-size: 1.1rem;
-    color: #666;
-    margin: 15px 0;
-    font-weight: 500;
-    text-align: center;
+ font-size: 0.85rem;      /* Um pouco menor para não brigar com os preços */
+    color: var(--gold-dark); /* Usando o seu dourado para dar intenção */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    
+    /* Puxando para cima */
+    margin-top: -5px;       
+    margin-bottom: 5px;
+    
+    /* Estilização extra: pequenas linhas laterais */
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 150px;       /* Limita o tamanho das linhas */
 }
 
+.price-separator::before,
+.price-separator::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(153, 116, 55, 0.2); /* Linha dourada bem suave */
+}
+
+.price-separator::before {
+    margin-right: 10px;
+}
+
+.price-separator::after {
+    margin-left: 10px;
+}
 /* Destaque maior para o valor à vista */
 .full-price-highlight {
     font-size: 1.6rem;
@@ -715,7 +789,25 @@ nav a:not(.btn-nav):hover:after {
     border-radius: 50px;
     display: inline-block;
     border: 1px dashed var(--gold-light);
-    margin-bottom: 30px;
+    margin-bottom: 5px;
+}
+
+.price-notice {
+    font-size: 0.95rem;
+    color: #777;            /* Um cinza médio para não pesar visualmente */
+    line-height: 1.6;
+    text-align: center;
+    max-width: 500px;       /* Mantém as linhas com um comprimento confortável para leitura */
+    margin: 5px auto 30px auto;     /* Centraliza e dá o respiro necessário entre o preço e o botão */
+    padding: 0 20px;        /* Garante que o texto não cole nas bordas em telas pequenas */
+    font-style: italic;     /* O itálico ajuda a diferenciar de um texto informativo comum */
+}
+
+/* Opcional: destaque apenas para a primeira frase para reforçar a escassez */
+.highlight-blue {
+    color: var(--primary-blue); /* Seu azul escuro */
+    font-weight: 700;           /* Negrito para dar mais ênfase */
+    font-style: normal;         /* Opcional: tira o itálico apenas dessa parte azul */
 }
 
 /* Lista de Benefícios Interna */
@@ -983,8 +1075,10 @@ footer {
 }
 
 /* ============================================================
-   RESPONSIVIDADE GERAL (CENTRALIZADA)
+   RESPONSIVIDADE GERAL CONSOLIDADA
    ============================================================ */
+
+/* TABLETS E MENORES */
 @media (max-width: 1024px) {
     .navbar .container {
         padding: 0 20px;
@@ -1043,108 +1137,95 @@ footer {
     }
 }
 
+/* MOBILE GERAL */
 @media (max-width: 768px) {
+    
+    /* HERO CENTRALIZADO */
+    .hero-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+    }
 
-    .hero-grid,
+    .hero-text {
+        order: 1;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem; /* Ajustado para não estourar no mobile */
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .hero-img {
+        order: 2;
+        width: 100%;
+        max-width: 450px; /* Limita o crescimento no mobile */
+        padding-left: 0 !important; /* Remove o padding que usamos no desktop */
+        margin: 0 auto;
+    }
+
+    .hero-img img {
+        width: 100%;
+        box-shadow: 10px 10px 0 var(--primary-blue);
+    }
+
+    /* SOBRE E REDES SOCIAIS */
     .about-grid {
         grid-template-columns: 1fr;
         text-align: center;
     }
 
-    .hero h1 {
-        font-size: 2.2rem;
+    .social-icons {
+        justify-content: center;
+        margin-top: 30px;
     }
 
+    /* GRIDS DE CONTEÚDO */
     .grid-4,
     .deliverables-grid {
         grid-template-columns: 1fr;
         gap: 15px;
     }
 
+    /* AJUSTES DE PREÇO NO MOBILE */
+    .price-title {
+        font-size: 1.3rem;
+        white-space: normal;
+        text-align: center;
+    }
+
+    .full-price-highlight {
+        font-size: 1.3rem; /* Diminuído para caber melhor na tela */
+        padding: 8px 18px;
+    }
+
+    .installment-line {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .inst-value {
+        font-size: 2.2rem; /* Preço parcelado mais proporcional */
+    }
+
+    /* DEMAIS ELEMENTOS */
     .step h4 {
         white-space: normal;
         font-size: 1.1rem;
     }
-
-    .main-price {
-        font-size: 2.5rem;
-    }
-
-    .cash-price {
-        font-size: 1.8rem;
-    }
 }
 
+/* CELULARES PEQUENOS */
 @media (max-width: 480px) {
-    .cta-button {
+    .cta-button, .cta-button-pay, .cta-button-final {
         width: 100%;
-    }
-}
-
-/* --- AJUSTES DE RESPONSIVIDADE HERO --- */
-@media (max-width: 768px) {
-    .hero-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-        display: flex; /* Mudamos para flex para controlar a ordem com facilidade */
-        flex-direction: column;
+        padding: 18px 15px;
     }
 
-    .hero-text {
-        order: 1; /* TEXTO PRIMEIRO */
-    }
-
-    .hero-img {
-        order: 2; /* IMAGEM DEPOIS */
-        margin-top: 30px;
-    }
-    
     .hero h1 {
-        font-size: 1.8rem;
-        line-height: 1.3;
-    }
-}
-
-/* --- AJUSTE REDES SOCIAIS (SOBRE) --- */
-.social-icons {
-    margin-top: 30px;
-    display: flex;
-    gap: 20px;
-    justify-content: flex-start; /* Padrão desktop */
-}
-
-@media (max-width: 768px) {
-    .about-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    
-    .social-icons {
-        justify-content: center; /* CENTRALIZA NO MOBILE */
-    }
-}
-
-/* --- AJUSTE RESPONSIVIDADE PREÇO --- */
-.price-title {
-    font-size: 1.7rem;
-    color: var(--primary-blue);
-    font-weight: 800;
-    margin-bottom: 20px;
-    /* Removemos o white-space: nowrap para permitir quebra */
-}
-
-@media (max-width: 768px) {
-    .price-title {
-        font-size: 1.4rem;
-        white-space: normal; /* Garante que a frase quebre linha */
-        text-align: center;
-    }
-    
-    .installment-line {
-        flex-wrap: wrap; /* Garante que o valor não escape da tela */
-    }
-
-    .inst-value {
-        font-size: 2.2rem;
+        font-size: 1.6rem;
     }
 }
